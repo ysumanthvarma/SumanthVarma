@@ -1,0 +1,9 @@
+- hosts: mygroup
+  gather_facts: no
+  tasks:
+   - name: "excuting the hostname command on nodes"
+     command: uptime
+     register: up_out
+   - debug: msg="{{ up_out.stdout }}" 
+
+
