@@ -1,0 +1,5 @@
+- hosts: mygroup
+  gather_facts: yes
+  tasks:
+   - name: copying files to the nodes
+     template: src=temp dest=/root mode=777 owner=root

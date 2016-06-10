@@ -1,0 +1,7 @@
+- hosts: mygroup
+  gather_facts: no
+  vars:
+    -name :sshd
+  tasks:
+    -name: restarting sshd
+     service: name={{ name }} state=restarted   

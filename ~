@@ -1,0 +1,5 @@
+- hosts: mygroups
+  gather_facts:no
+   tasks:
+    - name: creating a directory
+      shell: mkdir suma

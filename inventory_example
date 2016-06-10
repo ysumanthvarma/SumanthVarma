@@ -1,0 +1,6 @@
+
+- hosts: mygroup 
+  tasks: 
+    - name: this play the variable  
+      debug: msg={{ x }}
+

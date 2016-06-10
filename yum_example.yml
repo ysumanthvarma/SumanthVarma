@@ -1,0 +1,5 @@
+- hosts: mygroup
+  gather_facts: no
+  tasks:
+    - name: creating a directory
+      yum: name=tree state=installed

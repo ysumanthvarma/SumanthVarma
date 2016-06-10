@@ -1,0 +1,6 @@
+- hosts: mygroup
+  gather_facts: no
+  tasks:
+    - name: Downaloding jenkins
+      get_url: url=http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war dest=/root
+

@@ -1,0 +1,2 @@
+- name: copying the template
+  template: src=sample_temp.txt dest=/root

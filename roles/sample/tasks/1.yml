@@ -1,0 +1,2 @@
+- name: displaying the playbook 1
+  debug: msg="this is 1"

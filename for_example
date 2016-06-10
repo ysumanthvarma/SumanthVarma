@@ -1,0 +1,10 @@
+- hosts: mygroup
+  gather_facts: no
+  vars:
+   - x: ["localhost","JenkinsServer"]
+  tasks:
+   - name: Checking the hostnmae
+     debug: msg="This is {{ item }}"
+     with_items:
+      - "{{ x }}"
+   

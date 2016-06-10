@@ -1,0 +1,40 @@
+- name: "Installing the Packages for FTp"
+  yum: name=vsftpd state=installed
+
+
+- name: "Configuring the FTP server"
+  command: cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.org
+
+- name: "Configuring the FTP server"
+  lineinfile: dest=/etc/vsftpd/vsftpd.conf regexp="^anonymous_enable=*" line="anonymous_enable=NO"
+
+- name: "Configuring the FTP server"
+  lineinfile: dest=/etc/vsftpd/vsftpd.conf line={{ item }}
+  with_items:
+      - chroot_local_user=YES
+      - allow_writeable_chroot=YES
+      - pasv_enable=Yes
+      - pasv_min_port=40000
+      - pasv_max_port=40100
+
+- name: "Starting the FTP server"
+  service: name=vsftpd state=started enabled=yes
+
+- name: "Shut down the IP tbles"
+  service: name=firewalld state=stopped enabled=no
+
+- name: "setting the SELINUX CONTEXT"
+  command: getenforce
+  register: selinuxstatus
+
+- name: "setting the SELINUX CONTEXT"
+  shell: setsebool -P ftp_home_dir on
+  when: selinuxstatus.stdout == "Enforcing"
+
+- name: "Creating the user for the FTP"
+  user: name={{ ftp_user }} shell={{ ftp_user_shell }}
+
+- name: "Setting password for the FTP user"
+  command: echo -e "{{ ftp_user_pass }}\n{{ ftp_user_pass }}" | passwd sh
+
+

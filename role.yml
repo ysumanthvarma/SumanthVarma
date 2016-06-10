@@ -1,0 +1,4 @@
+- hosts: mygroup
+  gather_facts: no
+  roles:
+   - sample 

@@ -1,0 +1,5 @@
+- hosts: mygroup
+  gather_facts: no
+  tasks:
+    - name: copying the file to the nodes
+      copy: src=host_file dest=/root mode=777 owner=root
