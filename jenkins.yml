@@ -1,0 +1,18 @@
+- hosts: mygroup 
+#  gather_facts: false
+  vars:
+    - y: 10
+    - x: 2
+    - var: "this is a teask file"
+  tasks:
+   - name: This is a sample playbook
+     debug: msg="This is a sampe playbook"
+   - name: This is a sample task2
+     debug: msg="This is a task2"
+   - name: Dispalying the hostname 
+     debug: msg={{ansible_hostname}}
+   - name: set variable for x   
+     set_fact: x=1
+   - debug: msg={{ x }} 
+   - debug: msg={{ y }} 
+   - debug: msg="{{ var }}"

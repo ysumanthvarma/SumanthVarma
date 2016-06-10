@@ -1,0 +1,12 @@
+[group1]
+192.168.121.132  
+[group2]
+192.168.121.131 
+[mygroup:children]
+group1
+group2
+
+[group1:vars]
+x=10
+[group2:vars]
+x=20
