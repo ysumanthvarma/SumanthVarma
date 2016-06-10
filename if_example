@@ -1,0 +1,8 @@
+- hosts: mygroup
+  vars:
+   - x: ["git-server"] 
+     y: ["JenkinsServer"]	
+  tasks:
+   - name: Checking the hostname
+     debug: msg="This is {{ ansible_hostname }}"
+     when: '"ansible_hostname in x" and "ansible_hostname in y"'
